@@ -12,7 +12,7 @@ When /^I run the command "([^"]*)"$/ do |command|
 
     @read_pipe, @write_pipe = IO.pipe
 
-    @pid = spawn(command, :in=>@read_pipe, :out=>@slave)
+    @pid = spawn(command, :in=>@read_pipe, :out=>@slave, :err => @slave)
 
     @running_processes ||= []
     @running_processes << @pid
@@ -57,7 +57,10 @@ rescue Timeout::Error
 end
 
 
-Then /^it should print "([^"]*)"( without a newline)?$/ do |output, without_newline|
-  maybe_a_newline = without_newline.nil? ? "\n" : ''
-  output_should_equal(@master, output + maybe_a_newline)
+Then /^it should print "([^"]*)"$/ do |output|
+  output_should_equal(@master, output + "\n")
+end
+
+Then /^it should print "([^"]*)" without a newline$/ do |output|
+  output_should_equal(@master, output)
 end
