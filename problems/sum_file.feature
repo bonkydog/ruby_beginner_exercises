@@ -8,6 +8,6 @@ Feature: Sum File
       | 17 |
       | 23 |
     When I run the command "ruby sum.rb input/numbers"
-    Then it should print "45\n"
+    Then it should print "45"
 
 

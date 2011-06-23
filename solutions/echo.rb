@@ -3,4 +3,3 @@ if ARGV[0] == "-n"
 else
   print ARGV.join(" ") + "\n"
 end
-
