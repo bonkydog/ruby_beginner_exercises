@@ -9,9 +9,11 @@ To get started:
 
  * clone this repository
 
-   `git clone http:/github`
+   `git clone git://github.com/bonkydog/ruby_beginner_exercises.git`
 
  * install bundler
+
+  `cd ruby_beginner_exercises`
 
    `gem install bundler`
 
