@@ -4,7 +4,7 @@ require 'timeout'
 
 
 When /^I run the command "([^"]*)"$/ do |command|
-  Dir.chdir(SOLUTIONS_DIR) do
+  Dir.chdir(WORKING_DIR) do
 
     @master, @slave = PTY.open
 
@@ -28,7 +28,7 @@ When /I type "([^"]*)"/ do |input|
 end
 
 def output_should_equal(io, expected_output)
-  expected_pattern = Regexp.new("^" + Regexp.escape(expected_output))
+  expected_pattern = Regexp.new('\A' + Regexp.escape(expected_output), Regexp::MULTILINE)
   timeout = 3
   output = ""
 
@@ -63,4 +63,30 @@ end
 
 Then /^it should print "([^"]*)" without a newline$/ do |output|
   output_should_equal(@master, output)
+end
+
+Then /^it should exit$/ do
+  begin
+    timeout = 10
+    i = 0
+    program_exited = false
+    while i < timeout && !program_exited
+      program_exited = !!Process.waitpid(@pid, Process::WNOHANG)
+      sleep 0.1
+      i += 1
+    end
+
+    unless program_exited
+      Process.kill(@pid)
+      Process.waitpid(@pid, Process::WNOHANG)
+      fail("Program was supposed to exit, but it didn't")
+    end
+
+    unless @unconsumed_output.empty?
+      fail("Program printed unexpected output: '#{@unconsumed_output}'")
+    end
+    
+  ensure
+    @pid = nil
+  end
 end

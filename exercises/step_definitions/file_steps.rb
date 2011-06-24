@@ -1,5 +1,5 @@
 Given /^a file called "([^"]*)" with this content:$/ do |file_name, content|
-  Dir.chdir(SOLUTIONS_DIR) do
+  Dir.chdir(WORKING_DIR) do
     directory = File.dirname(file_name)
     FileUtils.mkdir_p(directory) unless directory == ""
     File.open(file_name, "w") do |f|
