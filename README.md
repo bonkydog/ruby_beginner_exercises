@@ -3,29 +3,29 @@ Programming Excercises in Ruby for Beginners
 
 To get started:
 
- * install ruby, git, and rubygems
+ Install ruby, git, and rubygems:
 
    `Instructions are here: http://www.wiki.devchix.com/index.php?title=Workshop_Installation_Notes_Rails_3`
 
- * clone this repository
+ Clone this repository:
 
    `git clone git://github.com/bonkydog/ruby_beginner_exercises.git`
 
- * install bundler
+ Install bundler:
 
   `cd ruby_beginner_exercises`
 
    `gem install bundler`
 
- * install gems
+ Install gems used by the exercises:
 
    `bundle install`
 
- * run the tests
+ Run the tests:
 
    `cucumber exercises`
 
- * write code in the workspace directory to make them pass!
+ Write code in the workspace directory to make them pass!
 
 Solutions are in the solutions directory (but don't peek unless you have to!)
 
