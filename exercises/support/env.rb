@@ -1,5 +1,7 @@
-WORKING_DIR = File.expand_path("../../../#{ENV['I_AM_THE_TEACHER'] ? 'solutions' : 'workspace' }", __FILE__ )
+require 'rubygems'
+require 'bundler/setup'
 
+WORKING_DIR = File.expand_path("../../../#{ENV['I_AM_THE_TEACHER'] ? 'solutions' : 'workspace' }", __FILE__ )
 
 After do
   if @pid
