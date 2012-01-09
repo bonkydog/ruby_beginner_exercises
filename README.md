@@ -1,4 +1,4 @@
-Programming Excercises in Ruby for Beginners
+Programming Exercises in Ruby for Beginners
 ============================================
 
 To get started:
